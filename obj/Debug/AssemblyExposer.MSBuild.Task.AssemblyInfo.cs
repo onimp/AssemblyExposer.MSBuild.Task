@@ -10,13 +10,14 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("AssemblyExposer.MSBuild.Task")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("onimp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.3.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.3")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssemblyExposer.MSBuild.Task")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssemblyExposer.MSBuild.Task")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("0.1.3.0")]
+[assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/onimp/AssemblyExposer.MSBuild.Task")]
 
 // Создано классом WriteCodeFragment MSBuild.
 
