@@ -45,7 +45,12 @@ public class ExposeAssembly : Microsoft.Build.Utilities.Task {
 
             var name = Path.GetFileName(sourceAssembly);
             Directory.CreateDirectory(OutputDirectory);
-            Apply(sourceAssembly, rules).Write(Path.Combine(OutputDirectory, name));
+            using var assembly = ModuleDefMD.Load(sourceAssembly);
+            
+            Log.LogMessage($"Rewriting visibility for {sourceAssembly}");
+            Apply(assembly, rules);
+            
+            assembly.Write(Path.Combine(OutputDirectory, name));
             SaveState(sourceAssembly, rules);
         }
     }
@@ -94,9 +99,7 @@ public class ExposeAssembly : Microsoft.Build.Utilities.Task {
         );
     }
 
-    private ModuleDef Apply(string assemblyFileName, List<RewriteRule> rules) {
-        Log.LogMessage($"Rewriting visibility for {assemblyFileName}");
-        ModuleDef assembly = ModuleDefMD.Load(assemblyFileName);
+    private void Apply(ModuleDefMD assembly, List<RewriteRule> rules) {
         foreach (var type in assembly.GetTypes()) {
             ApplyRules(rules, type);
             foreach (var method in type.Methods)
@@ -112,7 +115,6 @@ public class ExposeAssembly : Microsoft.Build.Utilities.Task {
                 ApplyRules(rules, field);
             }
         }
-        return assembly;
     }
 
     private void ApplyRules(List<RewriteRule> rules, IMemberDef def) {
