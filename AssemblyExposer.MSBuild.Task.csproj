@@ -45,10 +45,7 @@
     </Target>
     
     <ItemGroup>
-        <Content Include="build\*" PackagePath="build\" />
-        <Content Update="build\net48\AssemblyExposer.MSBuild.Task.props">
-          <PackagePath>build\</PackagePath>
-        </Content>
+        <Content Include="build\**" PackagePath="build\"/>
     </ItemGroup>
     
     <ItemGroup>
