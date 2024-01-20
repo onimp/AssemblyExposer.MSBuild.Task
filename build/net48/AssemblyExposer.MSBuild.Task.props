@@ -1,0 +1,4 @@
+﻿<Project TreatAsLocalProperty="TaskAssembly">
+    <UsingTask TaskName="ExposeAssembly"
+               AssemblyFile="$(MSBuildThisFileDirectory)..\..\tasks\net48\AssemblyExposer.MSBuild.Task.dll" />
+</Project>

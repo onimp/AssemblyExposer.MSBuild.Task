@@ -1,2 +1,4 @@
-/tasks/
-/obj/
+/tasks
+/obj
+/.idea
+/bin

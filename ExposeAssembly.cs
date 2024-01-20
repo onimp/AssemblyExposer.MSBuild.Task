@@ -11,9 +11,9 @@ namespace AssemblyExposer.MSBuild.Task;
 
 public class ExposeAssembly : Microsoft.Build.Utilities.Task {
 
-    public virtual ITaskItem[] SourceAssemblies { get; set; }
+    public virtual ITaskItem[]? SourceAssemblies { get; set; }
     public virtual string OutputDirectory { get; set; } = @"lib\exposed";
-    public virtual ITaskItem[] Rules { get; set; }
+    public virtual ITaskItem[]? Rules { get; set; }
 
     public override bool Execute() {
         if (SourceAssemblies == null) {
@@ -37,7 +37,7 @@ public class ExposeAssembly : Microsoft.Build.Utilities.Task {
     private void WriteAssemblies() {
         var rules = Rules.Select(it => new RewriteRule(it)).ToList();
 
-        foreach (var assemblyItem in SourceAssemblies) {
+        foreach (var assemblyItem in SourceAssemblies!) {
             var sourceAssembly = assemblyItem.ItemSpec;
 
             if (!ProcessingRequired(sourceAssembly, rules))
